@@ -1,0 +1,61 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.KhachHang.CartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Giỏ hàng" Height="600" Width="650"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Danh sách sách -->
+        <ScrollViewer Grid.Row="0" 
+              VerticalScrollBarVisibility="Hidden" 
+              HorizontalScrollBarVisibility="Hidden">
+            <ItemsControl x:Name="itemsGioHang">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1" BorderBrush="LightGray" CornerRadius="5" Margin="5" Padding="5">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <!-- Checkbox chọn sản phẩm -->
+                                <CheckBox Width="20" IsChecked="{Binding IsSelected, Mode=TwoWay}" Margin="5"/>
+
+                                <!-- Ảnh sách -->
+                                <Image Source="{Binding HinhAnhBitmap}" Height="100" Width="100"/>
+
+                                <!-- Thông tin sách -->
+                                <StackPanel Margin="10,0" Width="200">
+                                    <TextBlock Text="{Binding Sach.TenSach}" FontSize="14" FontWeight="Bold" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding Sach.TacGia}" FontSize="12" Foreground="Gray"/>
+                                    <TextBlock Text="{Binding Sach.GiaHienTai, StringFormat={}{0:N0} đ}" 
+                                                FontSize="13" Foreground="Red"/>
+                                </StackPanel>
+
+                                <!-- Số lượng với nút + / - -->
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
+                                    <Button Content="-" Width="25" Height="25" FontWeight="Bold" 
+                                            Click="BtnGiamSoLuong_Click"/>
+                                    <TextBox Text="{Binding SoLuong, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                             Width="40" Height="25" TextAlignment="Center" Margin="2,0"/>
+                                    <Button Content="+" Width="25" Height="25" FontWeight="Bold" 
+                                            Click="BtnTangSoLuong_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Tổng tiền + nút mua hàng -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,0,0" >
+            <TextBlock Text="Tổng tiền: " FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+            <TextBlock x:Name="txtTongTien" Text="0 đ" FontWeight="Bold" FontSize="16" Margin="5,0"/>
+            <Button x:Name="btnMuaHang" Content="Mua hàng" Click="btnMuaHang_Click"
+                    Background="#4CAF50" Foreground="White" Padding="10,5" FontWeight="Bold" 
+                    BorderThickness="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

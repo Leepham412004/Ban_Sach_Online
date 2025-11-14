@@ -1,0 +1,69 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.Admin.ThemSuaSachWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Thêm/Sửa Sách" Height="700" Width="500">
+    <ScrollViewer>
+        <StackPanel Margin="20">
+
+            <TextBlock Text="Tên sách:"/>
+            <TextBox x:Name="txtTenSach" Margin="0,5,0,10"/>
+
+            <TextBlock Text="Tác giả:"/>
+            <TextBox x:Name="txtTacGia" Margin="0,5,0,10"/>
+
+            <TextBlock Text="Nhà xuất bản:"/>
+            <TextBox x:Name="txtNhaXB" Margin="0,5,0,10"/>
+
+            <TextBlock Text="Năm xuất bản:"/>
+            <TextBox x:Name="txtNamXB" Margin="0,5,0,10"/>
+
+            <TextBlock Text="Thể loại:"/>
+            <ComboBox x:Name="cbTheLoai" Margin="0,5,0,10"
+                      DisplayMemberPath="TenTheLoai"
+                      SelectedValuePath="TheLoaiId"/>
+
+            <TextBlock Text="Giá bán:"/>
+            <TextBox x:Name="txtGia" Margin="0,5,0,10"/>
+
+            <!-- Grid 2 cột cho Kích thước, Số trang, Trọng lượng, Số lượng -->
+            <Grid Margin="0,5,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Cột 1 -->
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Số lượng:"/>
+                    <TextBox x:Name="txtSoLuong" Margin="0,5,0,10"/>
+
+                    <TextBlock Text="Số trang:"/>
+                    <TextBox x:Name="txtSoTrang" Margin="0,5,0,10"/>
+                </StackPanel>
+
+                <!-- Cột 2 -->
+                <StackPanel Grid.Column="1" Margin="20,0,0,0">
+                    <TextBlock Text="Kích thước:"/>
+                    <TextBox x:Name="txtKichThuoc" Margin="0,5,0,10"/>
+
+                    <TextBlock Text="Trọng lượng:"/>
+                    <TextBox x:Name="txtTrongLuong" Margin="0,5,0,10"/>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Text="Mô tả:"/>
+            <TextBox x:Name="txtMoTa" Margin="0,5,0,10" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <TextBlock Text="Ảnh sách:"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
+                <TextBox x:Name="txtHinhAnh" Width="200" IsReadOnly="True"/>
+                <Button Content="Chọn ảnh" Width="100" Margin="10,0,0,0" Click="BtnChonAnh_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <Button Content="Lưu" Width="100" Click="BtnLuu_Click"/>
+                <Button Content="Hủy" Width="100" Margin="10,0,0,0" Click="BtnHuy_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

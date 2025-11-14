@@ -1,0 +1,52 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.DangKy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ban_Sach_Online.Views"
+        mc:Ignorable="d"
+        Title="Đăng Ký Tài Khoản" Height="720" Width="750">
+
+    <Grid>
+        <TextBlock Text="ĐĂNG KÝ TÀI KHOẢN" FontSize="30" FontWeight="Bold"
+                   HorizontalAlignment="Center" VerticalAlignment="Top"
+                   Padding="10" Margin="0,34,0,0"/>
+
+        <StackPanel Margin="170,120,170,0" VerticalAlignment="Top" Orientation="Vertical">
+
+            <!-- Họ và tên -->
+            <TextBlock Text="Họ và Tên" FontSize="20"/>
+            <TextBox x:Name="txtHoTen" Height="40" FontSize="20"/>
+
+            <!-- Số điện thoại -->
+            <TextBlock Text="Số Điện Thoại" FontSize="20" Margin="0,10,0,0"/>
+            <TextBox x:Name="txtSoDienThoai" Height="40" FontSize="20"/>
+
+            <!-- Email -->
+            <TextBlock Text="Email" FontSize="20" Margin="0,10,0,0"/>
+            <TextBox x:Name="txtEmail" Height="40" FontSize="20"/>
+
+            <!-- Tên đăng nhập -->
+            <TextBlock Text="Tên Đăng Nhập" FontSize="20" Margin="0,10,0,0"/>
+            <TextBox x:Name="txtTenDangNhap" Height="40" FontSize="20"/>
+
+            <!-- Mật khẩu -->
+            <TextBlock Text="Mật Khẩu" FontSize="20" Margin="0,10,0,0"/>
+            <PasswordBox x:Name="txtMatKhau" Height="40" FontSize="20"/>
+
+            <!-- Xác nhận mật khẩu -->
+            <TextBlock Text="Xác Nhận Mật Khẩu" FontSize="20" Margin="0,10,0,0"/>
+            <PasswordBox x:Name="txtXacNhanMatKhau" Height="40" FontSize="20"/>
+
+            <!-- Nút -->
+            <StackPanel Orientation="Horizontal" Margin="0,25,0,0" HorizontalAlignment="Center">
+                <Button Content="Đăng Ký" Width="120" Margin="10"
+                        Click="BtnDangKy_Click"
+                        Background="#27AE60" Foreground="White" Height="40" FontSize="20"/>
+                <Button Content="Hủy" Width="120" Margin="10"
+                        Click="BtnHuy_Click"
+                        Background="#E74C3C" Foreground="White" Height="40" FontSize="20"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

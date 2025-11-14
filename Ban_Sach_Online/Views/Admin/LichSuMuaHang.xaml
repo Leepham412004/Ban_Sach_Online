@@ -1,0 +1,35 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.Admin.LichSuMuaHang"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Lịch Sử Mua Hàng" Height="650" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Danh sách hóa đơn của khách hàng -->
+        <DataGrid x:Name="dgHoaDon" Grid.Row="0" AutoGenerateColumns="False" IsReadOnly="True"
+                  SelectionChanged="DgHoaDon_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã HĐ" Binding="{Binding HoaDonId}" Width="100"/>
+                <DataGridTextColumn Header="Ngày lập" Binding="{Binding NgayLap}" Width="150"/>
+                <DataGridTextColumn Header="Tổng tiền" Binding="{Binding TongTien}" Width="120"/>
+                <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Chi tiết hóa đơn -->
+        <GroupBox Header="Chi tiết hóa đơn" Grid.Row="1" Margin="0,10,0,0">
+            <DataGrid x:Name="dgChiTiet" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Tên sách" Binding="{Binding TenSach}" Width="200"/>
+                    <DataGridTextColumn Header="Số lượng" Binding="{Binding SoLuong}" Width="100"/>
+                    <DataGridTextColumn Header="Giá" Binding="{Binding DonGia}" Width="120"/>
+                    <DataGridTextColumn Header="Thành tiền" Binding="{Binding ThanhTien}" Width="120"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+    </Grid>
+</Window>

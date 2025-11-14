@@ -1,0 +1,123 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.KhachHang.TimKiem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Tìm kiếm"
+        Height="700" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFF8F8F8">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 🔍 PHẦN TÌM KIẾM & LỌC -->
+        <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
+            <!-- Thanh tìm kiếm -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                <xctk:WatermarkTextBox x:Name="txtKeyword"
+                                       Width="300" Height="30"
+                                       VerticalContentAlignment="Center"
+                                       FontSize="14"
+                                       Watermark="Tìm kiếm sách theo tên, tác giả..."
+                                       TextChanged="txtKeyword_TextChanged"
+                                       KeyDown="txtKeyword_KeyDown"/>
+                <Button Content="Tìm kiếm"
+                        Margin="10,0,0,0"
+                        Padding="15,0"
+                        Click="Button_Loc_Click"
+                        Background="#FFCC7521"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand"/>
+            </StackPanel>
+
+            <!-- Bộ lọc -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Giá từ:" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="txtGiaMin" Width="80" Margin="5"/>
+                <TextBlock Text="đến:" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="txtGiaMax" Width="80" Margin="5"/>
+
+                <TextBlock Text="Thể loại:" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <ComboBox x:Name="cboTheLoai" Width="150" Margin="5"
+                            DropDownOpened="cboTheLoai_DropDownOpened"/>
+
+                <TextBlock Text="Đánh giá:" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <ComboBox x:Name="cboDanhGia" Width="100" Margin="5">
+                    <ComboBoxItem Content="1 sao"/>
+                    <ComboBoxItem Content="2 sao"/>
+                    <ComboBoxItem Content="3 sao"/>
+                    <ComboBoxItem Content="4 sao"/>
+                    <ComboBoxItem Content="5 sao"/>
+                </ComboBox>
+
+                <Button Content="Áp dụng lọc"
+                        Margin="10,0,0,0"
+                        Padding="15,0"
+                        Click="Button_Loc_Click"
+                        Background="#FFCC7521"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- 🧾 PHẦN HIỂN THỊ KẾT QUẢ -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="itemsKetQua">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!-- Giao diện mỗi sách -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border MouseLeftButtonUp="Sach_Click"
+                            Cursor="Hand"
+                            Margin="10"
+                            Background="White"
+                            CornerRadius="8"
+                            Width="180"
+                            Height="300"
+                            BorderBrush="#DDD"
+                            BorderThickness="1"
+                            Padding="8">    
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black"
+                                      BlurRadius="10"
+                                      ShadowDepth="2"
+                                      Opacity="0.3"/>
+                            </Border.Effect>
+
+                            <StackPanel>
+                                <Image Source="{Binding HinhAnh}" 
+                                   Width="160" Height="200"
+                                   Stretch="UniformToFill"
+                                   Margin="0,0,0,5"/>
+                                <TextBlock Text="{Binding TenSach}" 
+                                   FontWeight="Bold"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Margin="0,5,0,0"/>
+                                <TextBlock Text="{Binding Gia, StringFormat={}{0:N0} đ}"
+                                   Foreground="Red"
+                                   FontWeight="SemiBold"
+                                   TextAlignment="Center"/>
+                                <TextBlock Text="{Binding SoLuongDaBan, StringFormat=Đã bán: {0} cuốn}"
+                                   FontSize="12"
+                                   Foreground="Gray"
+                                   TextAlignment="Center"
+                                   Margin="0,2,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>

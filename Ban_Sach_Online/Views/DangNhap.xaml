@@ -1,0 +1,106 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.DangNhap"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Đăng Nhập - Bán Sách Online"
+        Height="520" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#F5F6FA">
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="81*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Cột trái (ảnh + giới thiệu) -->
+        <Border Grid.Column="0" CornerRadius="200,0,200,0" Margin="15,80,1,106">
+            <Border.Background>
+                <ImageBrush ImageSource="/Views/Admin/cuahang.jpg" Stretch="UniformToFill"/>
+            </Border.Background>
+
+            <Grid>
+                <Border Margin="30,-137,10,177">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Bán Sách Online"
+                                   FontSize="32" FontWeight="Bold"
+                                   Foreground="#FF2E3B31"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="Nền tảng quản lý &amp; kinh doanh sách hiệu quả"
+                                   FontSize="16" Foreground="#FF28352B"
+                                   TextAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Cột phải (Form đăng nhập) -->
+        <Border Grid.Column="1"
+                CornerRadius="15"
+                Background="White"
+                Margin="30,40,30,10"
+                Padding="30"
+                ClipToBounds="True">
+
+            <!-- Dùng Grid để canh giữa, tránh StackPanel bị kéo xuống -->
+            <Grid VerticalAlignment="Center">
+                <StackPanel>
+
+                    <TextBlock Text="ĐĂNG NHẬP"
+                               FontSize="28" FontWeight="Bold"
+                               Foreground="#2C3E50"
+                               HorizontalAlignment="Center" Margin="0,0,0,25"/>
+
+                    <!-- Email -->
+                    <TextBlock Text="Email" FontSize="16" Foreground="#34495E"/>
+                    <TextBox x:Name="txtEmail"
+                             Height="45" Margin="0,5,0,20"
+                             FontSize="16" Padding="10"
+                             BorderBrush="#BDC3C7" BorderThickness="1"
+                             Background="#FDFEFE"
+                             VerticalContentAlignment="Center"
+                             HorizontalAlignment="Stretch"/>
+
+                    <!-- Mật khẩu -->
+                    <TextBlock Text="Mật khẩu" FontSize="16" Foreground="#34495E"/>
+                    <PasswordBox x:Name="txtMatKhau"
+                                 Height="45" Margin="0,5,0,25"
+                                 FontSize="16" Padding="10"
+                                 BorderBrush="#BDC3C7" BorderThickness="1"
+                                 Background="#FDFEFE"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalAlignment="Stretch"/>
+
+                    <!-- Nút đăng nhập + đăng ký -->
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,10,0,20">
+                        <Button Content="Đăng Nhập" Width="130" Height="45"
+                                Background="#27AE60" Foreground="White"
+                                FontWeight="Bold" FontSize="16"
+                                Margin="5" Cursor="Hand"
+                                BorderBrush="Transparent"
+                                Click="BtnDangNhap_Click"/>
+
+                        <Button Content="Đăng Ký" Width="130" Height="45"
+                                Background="#E74C3C" Foreground="White"
+                                FontWeight="Bold" FontSize="16"
+                                Margin="5" Cursor="Hand"
+                                BorderBrush="Transparent"
+                                Click="BtnDangKy_Click"/>
+                    </StackPanel>
+
+                    <!-- Quên mật khẩu -->
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="14" Foreground="#2980B9">
+                        <Hyperlink Click="BtnQuenMatKhau_Click" Cursor="Hand">
+                            Quên mật khẩu?
+                        </Hyperlink>
+                    </TextBlock>
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

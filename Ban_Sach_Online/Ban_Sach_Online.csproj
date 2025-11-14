@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ADD95BA4-5E30-4E3C-86D7-E37C03677ED6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Ban_Sach_Online</RootNamespace>
+    <AssemblyName>Ban_Sach_Online</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=5.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.5.0.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=5.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.5.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=5.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.5.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=5.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.5.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=5.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.5.0.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Migrations\202509220820082_InitialCreate.cs" />
+    <Compile Include="Migrations\202509220820082_InitialCreate.Designer.cs">
+      <DependentUpon>202509220820082_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202509260256571_UpdateSachModel.cs" />
+    <Compile Include="Migrations\202509260256571_UpdateSachModel.Designer.cs">
+      <DependentUpon>202509260256571_UpdateSachModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202509260818444_AddNhaXBColumnToSach.cs" />
+    <Compile Include="Migrations\202509260818444_AddNhaXBColumnToSach.Designer.cs">
+      <DependentUpon>202509260818444_AddNhaXBColumnToSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510200905141_AddTrangThaiToHoaDon.cs" />
+    <Compile Include="Migrations\202510200905141_AddTrangThaiToHoaDon.Designer.cs">
+      <DependentUpon>202510200905141_AddTrangThaiToHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510200907340_AddNgayDangKyToKhachHang.cs" />
+    <Compile Include="Migrations\202510200907340_AddNgayDangKyToKhachHang.Designer.cs">
+      <DependentUpon>202510200907340_AddNgayDangKyToKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510211400444_UpdateGioHangModel.cs" />
+    <Compile Include="Migrations\202510211400444_UpdateGioHangModel.Designer.cs">
+      <DependentUpon>202510211400444_UpdateGioHangModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510211402438_UpdateChiTietGioHang.cs" />
+    <Compile Include="Migrations\202510211402438_UpdateChiTietGioHang.Designer.cs">
+      <DependentUpon>202510211402438_UpdateChiTietGioHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510220624500_AddMatKhauToKhachHang.cs" />
+    <Compile Include="Migrations\202510220624500_AddMatKhauToKhachHang.Designer.cs">
+      <DependentUpon>202510220624500_AddMatKhauToKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510270343087_ThemThuocTinhSachMoi.cs" />
+    <Compile Include="Migrations\202510270343087_ThemThuocTinhSachMoi.Designer.cs">
+      <DependentUpon>202510270343087_ThemThuocTinhSachMoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510300639488_UpdateChiTietGiaHangModels.cs" />
+    <Compile Include="Migrations\202510300639488_UpdateChiTietGiaHangModels.Designer.cs">
+      <DependentUpon>202510300639488_UpdateChiTietGiaHangModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511030320105_AddTenDangNhapToKhachHang.cs" />
+    <Compile Include="Migrations\202511030320105_AddTenDangNhapToKhachHang.Designer.cs">
+      <DependentUpon>202511030320105_AddTenDangNhapToKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511050208535_FixGioHang1to1.cs" />
+    <Compile Include="Migrations\202511050208535_FixGioHang1to1.Designer.cs">
+      <DependentUpon>202511050208535_FixGioHang1to1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511060135550_Diachigiaohang.cs" />
+    <Compile Include="Migrations\202511060135550_Diachigiaohang.Designer.cs">
+      <DependentUpon>202511060135550_Diachigiaohang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511061305165_addSachNoiBat.cs" />
+    <Compile Include="Migrations\202511061305165_addSachNoiBat.Designer.cs">
+      <DependentUpon>202511061305165_addSachNoiBat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511061309261_AddGiamGia.cs" />
+    <Compile Include="Migrations\202511061309261_AddGiamGia.Designer.cs">
+      <DependentUpon>202511061309261_AddGiamGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511091400589_UpdateSchema.cs" />
+    <Compile Include="Migrations\202511091400589_UpdateSchema.Designer.cs">
+      <DependentUpon>202511091400589_UpdateSchema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511110327291_AddFlashSaleNgayDoi.cs" />
+    <Compile Include="Migrations\202511110327291_AddFlashSaleNgayDoi.Designer.cs">
+      <DependentUpon>202511110327291_AddFlashSaleNgayDoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511110420200_ChonSach.cs" />
+    <Compile Include="Migrations\202511110420200_ChonSach.Designer.cs">
+      <DependentUpon>202511110420200_ChonSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202511110431243_SachDaBan.cs" />
+    <Compile Include="Migrations\202511110431243_SachDaBan.Designer.cs">
+      <DependentUpon>202511110431243_SachDaBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dashboard.cs" />
+    <Compile Include="Views\Admin\AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ChiTietSach.xaml.cs">
+      <DependentUpon>ChiTietSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Converters.cs" />
+    <Compile Include="Views\Admin\LichSuMuaHang.xaml.cs">
+      <DependentUpon>LichSuMuaHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\QlDonHang.xaml.cs">
+      <DependentUpon>QlDonHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\QlNguoiDung.xaml.cs">
+      <DependentUpon>QlNguoiDung.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\QlSach.xaml.cs">
+      <DependentUpon>QlSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ThemSuaSachWindow.xaml.cs">
+      <DependentUpon>ThemSuaSachWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\QlDanhMuc.xaml.cs">
+      <DependentUpon>QlDanhMuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DangKy.xaml.cs">
+      <DependentUpon>DangKy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DangNhap.xaml.cs">
+      <DependentUpon>DangNhap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHang\CartWindow.xaml.cs">
+      <DependentUpon>CartWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHang\ChiTietSach_KH.xaml.cs">
+      <DependentUpon>ChiTietSach_KH.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHang\Converters\StockColorConverter.cs" />
+    <Compile Include="Views\KhachHang\Converters\StockConverters.cs" />
+    <Compile Include="Views\KhachHang\Converters\StockStatusConverter.cs" />
+    <Compile Include="Views\KhachHang\SachItem.xaml.cs">
+      <DependentUpon>SachItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHang\SachViewModel.cs" />
+    <Compile Include="Views\KhachHang\SuKienWindow.xaml.cs">
+      <DependentUpon>SuKienWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHang\TaiKhoan.xaml.cs">
+      <DependentUpon>TaiKhoan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHang\ThanhToanWindow.xaml.cs">
+      <DependentUpon>ThanhToanWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHang\TimKiem.xaml.cs">
+      <DependentUpon>TimKiem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHang\TrangChuWindow.xaml.cs">
+      <DependentUpon>TrangChuWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\CSDL_ConText.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Admin\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\ChiTietSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\LichSuMuaHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\QlDonHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\QlNguoiDung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\QlSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\ThemSuaSachWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\QlDanhMuc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DangKy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DangNhap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhachHang\CartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhachHang\ChiTietSach_KH.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhachHang\SachItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhachHang\SuKienWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhachHang\TaiKhoan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhachHang\ThanhToanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhachHang\TimKiem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhachHang\TrangChuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AnhSach.cs" />
+    <Compile Include="Models\ChiTietGioHang.cs" />
+    <Compile Include="Models\ChiTietHoaDon.cs" />
+    <Compile Include="Models\ChiTietNhapHang.cs" />
+    <Compile Include="Models\DanhGia.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\NhapHang.cs" />
+    <Compile Include="Models\Sach.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\TheLoai.cs" />
+    <Compile Include="Models\ThongKe.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Migrations\202509220820082_InitialCreate.resx">
+      <DependentUpon>202509220820082_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509260256571_UpdateSachModel.resx">
+      <DependentUpon>202509260256571_UpdateSachModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202509260818444_AddNhaXBColumnToSach.resx">
+      <DependentUpon>202509260818444_AddNhaXBColumnToSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510200905141_AddTrangThaiToHoaDon.resx">
+      <DependentUpon>202510200905141_AddTrangThaiToHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510200907340_AddNgayDangKyToKhachHang.resx">
+      <DependentUpon>202510200907340_AddNgayDangKyToKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510211400444_UpdateGioHangModel.resx">
+      <DependentUpon>202510211400444_UpdateGioHangModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510211402438_UpdateChiTietGioHang.resx">
+      <DependentUpon>202510211402438_UpdateChiTietGioHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510220624500_AddMatKhauToKhachHang.resx">
+      <DependentUpon>202510220624500_AddMatKhauToKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510270343087_ThemThuocTinhSachMoi.resx">
+      <DependentUpon>202510270343087_ThemThuocTinhSachMoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510300639488_UpdateChiTietGiaHangModels.resx">
+      <DependentUpon>202510300639488_UpdateChiTietGiaHangModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511030320105_AddTenDangNhapToKhachHang.resx">
+      <DependentUpon>202511030320105_AddTenDangNhapToKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511050208535_FixGioHang1to1.resx">
+      <DependentUpon>202511050208535_FixGioHang1to1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511060135550_Diachigiaohang.resx">
+      <DependentUpon>202511060135550_Diachigiaohang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511061305165_addSachNoiBat.resx">
+      <DependentUpon>202511061305165_addSachNoiBat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511061309261_AddGiamGia.resx">
+      <DependentUpon>202511061309261_AddGiamGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511091400589_UpdateSchema.resx">
+      <DependentUpon>202511091400589_UpdateSchema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511110327291_AddFlashSaleNgayDoi.resx">
+      <DependentUpon>202511110327291_AddFlashSaleNgayDoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511110420200_ChonSach.resx">
+      <DependentUpon>202511110420200_ChonSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202511110431243_SachDaBan.resx">
+      <DependentUpon>202511110431243_SachDaBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App1.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\KhachHang\sach1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Admin\cuahang.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\KhachHang\qc1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\KhachHang\qc2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\KhachHang\qc3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sach\GK_Toan1_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Sach\sach-giao-khoa-toan-1-0.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>

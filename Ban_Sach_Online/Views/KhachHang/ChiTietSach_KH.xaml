@@ -1,0 +1,68 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.KhachHang.ChiTietSach_KH"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Chi tiết sách" 
+        Height="800" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="20">
+
+            <!-- Ảnh sách -->
+            <Image x:Name="imgSach" Height="250" Stretch="Uniform" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Tên sách:" FontWeight="Bold" FontSize="14"/>
+            <TextBlock x:Name="txtTenSach" FontSize="16" TextWrapping="Wrap"/>
+
+            <TextBlock Text="Tác giả:" FontWeight="Bold" Margin="0,10,0,0" FontSize="14"/>
+            <TextBlock x:Name="txtTacGia"/>
+
+            <TextBlock Text="Nhà xuất bản:" FontWeight="Bold" Margin="0,10,0,0" FontSize="14"/>
+            <TextBlock x:Name="txtNhaXB"/>
+
+            <Grid Margin="0,15,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Năm xuất bản:" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock x:Name="txtNamXB" FontSize="16" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Thể loại:" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock x:Name="txtTheLoai" FontSize="16"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="30,0,0,0">
+                    <TextBlock Text="Giá bán:" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock x:Name="txtGia" Foreground="Red" FontSize="16" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Số lượng tồn kho:" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock x:Name="txtSoLuongTon" FontSize="16"/>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Text="Mô tả:" FontWeight="Bold" Margin="0,10,0,0" FontSize="14"/>
+            <TextBox x:Name="txtMoTa" 
+                     Height="100" 
+                     TextWrapping="Wrap" 
+                     AcceptsReturn="True" 
+                     VerticalScrollBarVisibility="Auto"
+                     IsReadOnly="True"/>
+
+            <!-- Nút thao tác -->
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
+                <Button x:Name="btnThemGioHang" 
+                        Content="🛒 Thêm vào giỏ hàng" 
+                        Width="160" Height="40" Margin="10" Background="#FF90CAF9" Click="btnThemGioHang_Click"/>
+
+                <Button x:Name="btnMuaNgay" 
+                        Content="💳 Mua ngay" 
+                        Width="120" Height="40" Margin="10" Background="#FF81C784" Click="btnMuaNgay_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>

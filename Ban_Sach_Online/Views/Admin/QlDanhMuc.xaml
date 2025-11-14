@@ -1,0 +1,54 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.Admin.QlDanhMuc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quản Lý Thể Loại" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tiêu đề -->
+        <TextBlock Text="Quản Lý Thể Loại" FontSize="18" FontWeight="Bold"
+                   HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+        <!-- Thanh tìm kiếm -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10" HorizontalAlignment="Left">
+            <TextBox x:Name="txtTimKiem"
+                 Width="250" Height="28"
+                 Margin="0,0,10,0"
+                 Text="Nhập tên thể loại..."
+                 Foreground="Gray"
+                 GotFocus="txtTimKiem_GotFocus"
+                 LostFocus="txtTimKiem_LostFocus"
+                 KeyDown="txtTimKiem_KeyDown"
+                 TextChanged="txtTimKiem_TextChanged"/>
+
+            <Button Content="Tìm kiếm" Width="100" Height="28"
+                    Click="BtnTimKiem_Click" Background="#FF2D4C33" Foreground="White"/>
+        </StackPanel>
+
+        <!-- DataGrid hiển thị danh sách thể loại -->
+        <DataGrid x:Name="dgTheLoai" Grid.Row="2" AutoGenerateColumns="False"
+                  CanUserAddRows="False" SelectionMode="Single" Margin="0,0,0,10"
+                  SelectionChanged="dgTheLoai_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding TheLoaiId}" Width="60"/>
+                <DataGridTextColumn Header="Tên Thể Loại" Binding="{Binding TenTheLoai}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Form thêm/sửa/xóa -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+            <TextBox x:Name="txtTenTheLoai" Width="250" Height="28" Margin="0,0,10,0"
+                     VerticalContentAlignment="Center" />
+            <Button Content="Thêm" Width="80" Height="28" Click="Button_Them_Click" Margin="0,0,5,0"/>
+            <Button Content="Sửa" Width="80" Height="28" Click="Button_Sua_Click" Margin="0,0,5,0"/>
+            <Button Content="Xóa" Width="80" Height="28" Click="Button_Xoa_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

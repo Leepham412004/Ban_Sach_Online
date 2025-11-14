@@ -1,0 +1,64 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.KhachHang.TaiKhoan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tài Khoản Của Tôi" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#FAFAFA">
+
+    <Border CornerRadius="10" BorderBrush="#DDD" BorderThickness="1" Margin="20" Padding="20" Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- 🔹 Thông tin người dùng -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,10">
+                <Ellipse Width="60" Height="60" Fill="#E3F2FD" Margin="0,0,10,0">
+                    <Ellipse.Stroke>
+                        <SolidColorBrush Color="#2196F3"/>
+                    </Ellipse.Stroke>
+                </Ellipse>
+                <StackPanel>
+                    <TextBlock Text="Xin chào," FontSize="14" Foreground="Gray"/>
+                    <TextBlock Text="{Binding TenTaiKhoan}" FontSize="20" FontWeight="Bold" Foreground="#1976D2"/>
+                </StackPanel>
+                <Button Content="Đăng xuất" Width="100" Height="30"
+                        HorizontalAlignment="Right" Margin="20,0,0,0"
+                        Background="#E53935" Foreground="White"
+                        Click="DangXuat_Click"/>
+            </StackPanel>
+
+            <!-- 🔹 Danh sách đơn hàng -->
+            <GroupBox Header="Đơn hàng của bạn" Grid.Row="1" FontWeight="Bold">
+                <ListView ItemsSource="{Binding DanhSachDonHang}" Margin="0,10,0,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mã đơn" Width="100" DisplayMemberBinding="{Binding MaDon}"/>
+                            <GridViewColumn Header="Tên sách" Width="200" DisplayMemberBinding="{Binding TenSach}"/>
+                            <GridViewColumn Header="Số lượng" Width="80" DisplayMemberBinding="{Binding SoLuong}"/>
+                            <GridViewColumn Header="Tổng tiền" Width="100" DisplayMemberBinding="{Binding TongTien, StringFormat={}{0:N0}đ}"/>
+                            <GridViewColumn Header="Ngày đặt" Width="120" DisplayMemberBinding="{Binding NgayDat, StringFormat={}{0:dd/MM/yyyy}}"/>
+                            <GridViewColumn Header="Tình trạng" Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TinhTrang}"
+                                                   Foreground="{Binding MauTinhTrang}"
+                                                   FontWeight="SemiBold"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </GroupBox>
+
+            <!-- 🔹 Thống kê đơn hàng -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <TextBlock Text="Tổng số sách đã đặt: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding TongDonHang}" Foreground="#1976D2" FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

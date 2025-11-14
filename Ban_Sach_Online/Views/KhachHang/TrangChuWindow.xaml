@@ -1,0 +1,295 @@
+﻿<Window x:Class="Ban_Sach_Online.Views.KhachHang.TrangChuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Trang Chủ - Bán Sách Online"
+        Width="1200" Height="850"
+        Background="#F9FAFB"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- 🔹 Nút bo góc chung -->
+        <Style x:Key="RoundedButton" TargetType="Button">
+            <Setter Property="Background" Value="#3B82F6"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#2563EB"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <DropShadowEffect x:Key="Shadow" Color="Black" Opacity="0.15" BlurRadius="10" ShadowDepth="3"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <Border Background="#FFE6A464" Grid.Row="0">
+            <DockPanel>
+                <TextBlock Text="📚 Bán Sách Online"
+                   Foreground="White"
+                   FontWeight="Bold"
+                   FontSize="22"
+                   VerticalAlignment="Center"
+                   Margin="20,0,0,0"/>
+                <!-- Ô tìm kiếm + icon -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <!-- Ô tìm kiếm -->
+                    <Border Background="White" CornerRadius="20" BorderBrush="#E5E7EB" BorderThickness="1" Width="380" Height="36" Margin="0,0,10,0">
+                        <Grid>
+                            <xctk:WatermarkTextBox x:Name="txtTimKiem" BorderThickness="0" Padding="15,0" VerticalContentAlignment="Center" FontSize="14" Foreground="Black" Background="Transparent"  
+                                                   Watermark="Tìm theo tên sách..."
+                                                   KeyDown="txtTimKiem_KeyDown" TextChanged="txtTimKiem_TextChanged"/>
+                        </Grid>
+                    </Border>
+                   
+                    <Button Content="Tìm kiếm" Width="100" Height="36" Style="{StaticResource RoundedButton}" Margin="0,0,10,0" Click="Button_Click_TimKiem" Background="#FFBF8A57"/>
+                    <Button x:Name="btnDanhMuc" Width="36" Height="36" Style="{StaticResource RoundedButton}" Background="White"
+                             MouseEnter="btnDanhMuc_MouseEnter" MouseLeave="btnDanhMuc_MouseLeave" Margin="0,0,10,0">
+                        <TextBlock Text="☰" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFBF8A57"/>
+                    </Button>
+                    <!-- Popup hiển thị danh mục -->
+                    <Popup x:Name="popupDanhMuc" PlacementTarget="{Binding ElementName=btnDanhMuc}" Placement="Bottom" StaysOpen="False">
+                        <Border Background="White" BorderBrush="#E5E7EB" BorderThickness="1" CornerRadius="10" Padding="10" Effect="{StaticResource Shadow}">
+                            <StackPanel>
+                                <!-- Item mẫu -->
+                                <Border Margin="5" Padding="5" CornerRadius="8" Background="White" Cursor="Hand" MouseDown="DanhMuc_Click">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="📖" FontSize="16" Margin="0,0,10,0"/>
+                                        <TextBlock Text="Văn học" FontSize="14" FontWeight="SemiBold" Foreground="#3B82F6"/>
+                                    </StackPanel>
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#BFDBFE"/>
+                                                    <Setter Property="RenderTransform">
+                                                        <Setter.Value>
+                                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                </Border>
+
+                                <!-- Copy thêm các item khác -->
+                                <Border Margin="5" Padding="5" CornerRadius="8" Background="White" Cursor="Hand" MouseDown="DanhMuc_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="💰" FontSize="16" Margin="0,0,10,0"/>
+                                        <TextBlock Text="Kinh tế" FontSize="14" FontWeight="SemiBold" Foreground="#3B82F6"/>
+                                    </StackPanel>
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#BFDBFE"/>
+                                                    <Setter Property="RenderTransform">
+                                                        <Setter.Value>
+                                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                </Border>
+
+                                <Border Margin="5" Padding="5" CornerRadius="8" Background="White" Cursor="Hand" MouseDown="DanhMuc_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="🌐" FontSize="16" Margin="0,0,10,0"/>
+                                        <TextBlock Text="Ngoại văn" FontSize="14" FontWeight="SemiBold" Foreground="#3B82F6"/>
+                                    </StackPanel>
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#BFDBFE"/>
+                                                    <Setter Property="RenderTransform">
+                                                        <Setter.Value>
+                                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                </Border>
+
+                                <!-- Thêm các danh mục khác tương tự -->
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                    <!-- Biểu tượng Giỏ hàng -->
+                    <Button Width="36" Height="36" Style="{StaticResource RoundedButton}" Background="White" Margin="0,0,10,0" Click="Button_Click_GioHang">
+                        <TextBlock Text="🛒" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFBF8A57"/>
+                    </Button>
+
+                    <!-- Biểu tượng User -->
+                    <Button Width="36" Height="36" Style="{StaticResource RoundedButton}" Background="White" Click="Button_Click_User">
+                        <TextBlock Text="👤" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFBF8A57"/>
+                    </Button>
+
+                </StackPanel>
+
+            </DockPanel>
+        </Border>
+
+        <!-- NỘI DUNG CUỘN -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <!-- BANNER -->
+                <Border Background="#E0F2FE" Height="300" Margin="0,0,0,10">
+                    <Grid>
+                        <Image x:Name="imgBanner" Stretch="UniformToFill" Opacity="0.95"/>
+                    </Grid>
+                </Border>
+
+                <!-- DANH MỤC ICON -->
+                <ItemsControl HorizontalAlignment="Center" Margin="0,10">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Width" Value="110"/>
+                            <Setter Property="Height" Value="110"/>
+                            <Setter Property="Margin" Value="10"/>
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="BorderBrush" Value="#E5E7EB"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Effect" Value="{StaticResource Shadow}"/>
+                            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                                CornerRadius="12"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}">
+                                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <TextBlock Text="{TemplateBinding Content}"
+                                                           FontSize="16"
+                                                           FontWeight="Bold"
+                                                           Foreground="#FFCC7521"
+                                                           TextAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <!-- Hover: đổi màu + phóng to -->
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                            To="#BFDBFE" Duration="0:0:0.2"/>
+                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                             To="1.1" Duration="0:0:0.2"/>
+                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                             To="1.1" Duration="0:0:0.2"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                            To="White" Duration="0:0:0.2"/>
+                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                             To="1" Duration="0:0:0.2"/>
+                                                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                             To="1" Duration="0:0:0.2"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ItemsControl.Resources>
+
+                    <Button Content="10/10" Click="Button_Click_SuKien"/>
+                    <Button Content="Ngoại Văn" Click="Button_Click_NgoaiVan"/>
+                    <Button Content="McBooks" Click="Button_Click_McBooks"/>
+                    <Button Content="Mã Giảm Giá" Click="Button_Click_MaGiamGia"/>
+                    <Button Content="Sản Phẩm Mới" Click="Button_Click_SpMoi"/>
+                    <Button Content="Flash Sale" Click="Button_Click_sale"/>
+                    <Button Content="Manga" Click="Button_Click_Manga"/>
+                </ItemsControl>
+
+                <!-- FLASH SALE -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
+                    <TextBlock x:Name="txtFlashSaleTime"
+               Text="⏰ Còn lại: 01:00:00"
+               FontSize="18"
+               FontWeight="Bold"
+               Foreground="Red"
+               TextAlignment="Center"/>
+                </StackPanel>
+
+
+                <!-- Flash Sale -->
+                <TextBlock Text="⚡ FLASH SALE" FontSize="20" FontWeight="Bold" Margin="20,10,0,5" Foreground="#FFCC7521"/>
+                <ItemsControl x:Name="itemsFlashSale" Margin="20">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+
+                <!-- Tủ sách nổi bật -->
+                <TextBlock Text="📚 TỦ SÁCH NỔI BẬT" FontSize="20" FontWeight="Bold" Margin="20,20,0,5" Foreground="#FFCC7521"/>
+                <ItemsControl x:Name="itemsNoiBat" Margin="20">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+
+                <!-- Bán chạy nhất tuần -->
+                <TextBlock Text="🔥 BÁN CHẠY NHẤT TUẦN" FontSize="20" FontWeight="Bold" Margin="20,20,0,5" Foreground="#FFCC7521"/>
+                <ItemsControl x:Name="itemsBanChay" Margin="20">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
